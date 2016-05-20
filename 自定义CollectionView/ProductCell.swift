@@ -1,123 +1,112 @@
 //
 //  ProductCell.swift
-//  自定义CollectionView
+//  TabelViewForSwift
 //
-//  Created by 王浩 on 16/4/22.
-//  Copyright © 2016年 cc. All rights reserved.
+//  Created by allen on 16/4/21.
+//  Copyright © 2016年 allen. All rights reserved.
 //
 
 import UIKit
 
 class ProductCell: UITableViewCell {
-    private static let productID = "productCell"
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    
-    
-    private lazy var productImageView:UIImageView = {
-        let productImageView = UIImageView()
+    private static let identifier:String = "productCell"
+    private lazy var mainImageView:UIImageView = {
+        let uiImageView = UIImageView()
         
-        
-        return productImageView
+        return uiImageView
     }()
-    
     
     private lazy var fineImageView:UIImageView = {
         let fineImageView = UIImageView()
         fineImageView.image = UIImage(named: "jingxuan.png")
+        
         return fineImageView
     }()
     
-    
-    
-    
-    
     private lazy var nameLabel:UILabel = {
         let nameLabel = UILabel()
-        nameLabel.font = UIFont.systemFontOfSize(14)
-        
+        nameLabel.font = UIFont.systemFontOfSize(13)
         return nameLabel
     }()
     
-    private lazy var buyOneImageView:UIImageView = {
-        let buyOneImageView = UIImageView()
-        buyOneImageView.image = UIImage(named: "buyOne.png")
-        return buyOneImageView
+    
+    private lazy var giveImageView:UIImageView = {
+        let giveImageView = UIImageView()
+        giveImageView.image = UIImage(named: "buyOne.png")
+        return giveImageView
     }()
+    
     
     private lazy var specialLabel:UILabel = {
         let specialLabel = UILabel()
+        specialLabel.font = UIFont.systemFontOfSize(13)
         return specialLabel
     }()
-    
-    
     
     private  var discountView:DiscountView?
     
     
-    private lazy var lineView:UIView = {
-        let lineView = UIView()
-        lineView.backgroundColor = lineViewColor
-        lineView.alpha = lineAlpha
-        
-        return lineView
-    }()
     
     
     
-    var goods:Goods?{
+    var goodsArr:Goods?{
         didSet{
-           productImageView.sd_setImageWithURL(NSURL(string: (goods?.img)!), placeholderImage: UIImage(named: "v2_placeholder_square"))
-            if goods!.pm_desc == "买一赠一" {
-                fineImageView.hidden = false
-            } else {
-                fineImageView.hidden = true
-            }
+            mainImageView.sd_setImageWithURL(NSURL(string: goodsArr!.img!), placeholderImage: UIImage(named: "v2_placeholder_square"))
             
-            if goods!.is_xf == 1 {
-                buyOneImageView.hidden = false
+            if goodsArr?.pm_desc == "买一赠一" {
+                giveImageView.hidden = false
             }else {
-                buyOneImageView.hidden = true
+                giveImageView.hidden = true
             }
             
-            specialLabel.text = goods?.specifics
+            if goodsArr?.is_xf  == 1 {
+                fineImageView.hidden = false
+            }else {
+                fineImageView.hidden = true
+                
+            }
             
-           // discountView =
+            specialLabel.text = goodsArr?.specifics
             
+            nameLabel.text = goodsArr?.name
+            
+            if discountView != nil {
+                discountView?.removeFromSuperview()
+            }
+            
+            discountView = DiscountView(discount: goodsArr?.partner_price , origin: goodsArr?.market_price)
+            
+            addSubview(discountView!)
         }
-    
+        
     }
     
     
-    
-    
-    
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?){
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = UIColor.groupTableViewBackgroundColor()
-        addSubview(productImageView)
         
+        addSubview(mainImageView)
+        addSubview(giveImageView)
+        addSubview(fineImageView)
+        addSubview(specialLabel)
+        addSubview(nameLabel)
         
     }
     
-    class func productTableView(tableView:UITableView)->ProductCell{
-        var cell = (tableView.dequeueReusableCellWithIdentifier(productID)) as? ProductCell
-        
+    
+    
+    
+    
+    
+    
+    class func tableView(tabView:UITableView) -> ProductCell{
+        var cell =  (tabView.dequeueReusableCellWithIdentifier(identifier)) as? ProductCell
         if cell == nil {
-            cell = ProductCell(style: .Default, reuseIdentifier: productID)
+            cell = ProductCell(style: .Default, reuseIdentifier: identifier)
         }
-        
         return cell!
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -125,11 +114,39 @@ class ProductCell: UITableViewCell {
     }
     
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        productImageView.frame = CGRect(x: 0, y: 0, width: CGRectGetHeight(bounds), height:CGRectGetHeight(bounds))
+        mainImageView.frame =  CGRect(x: 0, y: 0, width: CGRectGetHeight(bounds), height: CGRectGetHeight(bounds))
+        fineImageView.frame = CGRect(x: CGRectGetMaxX(mainImageView.frame) + margin, y: margin, width: 40, height: 16)
         
+        if fineImageView.hidden {
+            nameLabel.frame = CGRect(x: CGRectGetMaxX(mainImageView.frame) + margin, y: margin, width: mj_w - CGRectGetMaxX(mainImageView.frame) - margin , height: 16)
+        }else{
+            nameLabel.frame = CGRect(x: CGRectGetMaxX(fineImageView.frame) + margin, y: margin, width: mj_w - CGRectGetMaxX(fineImageView.frame) - margin , height: 16)
+        }
+        
+        giveImageView.frame = CGRect(x: CGRectGetMaxX(mainImageView.frame) + margin, y: CGRectGetMaxY(fineImageView.frame)+margin, width: 40, height: 16)
+        specialLabel.frame = CGRect(x: CGRectGetMaxX(mainImageView.frame) + margin, y: CGRectGetMaxY(giveImageView.frame)+margin, width: 100, height: 16)
+        
+        discountView?.frame = CGRect(x:  CGRectGetMaxX(mainImageView.frame) + margin, y:CGRectGetMaxY(specialLabel.frame)+margin , width: 150, height: 16)
+        print(CGRectGetMaxY(discountView!.frame))
+      //  nameLabel.frame
+        
+        
+        //  print("cell:\(NSStringFromCGRect(frame))")
+        //print("label:\(NSStringFromCGRect((mainImageView.frame)))")
     }
-
-
+    
+    
 }

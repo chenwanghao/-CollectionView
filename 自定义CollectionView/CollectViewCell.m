@@ -113,7 +113,8 @@
         if (self.discountView != nil) {
             [self.discountView removeFromSuperview];
         }
-        self.discountView = [[DiscountView alloc] initWithOrigin:[goods market_price] discount:[goods price]] ;
+       // self.discountView = [[DiscountView alloc] initWithOrigin:[goods market_price] discount:[goods price]] ;
+        self.discountView = [[DiscountView alloc] initWithDiscount:[goods price] origin:[goods market_price]];
         self.discountView.hidden = (type == CollectViewCellTypeBack);
         [self addSubview:self.discountView];
     }

@@ -1,87 +1,87 @@
 //
 //  DiscountView.swift
-//  自定义CollectionView
+//  TabelViewForSwift
 //
-//  Created by 王浩 on 16/4/22.
-//  Copyright © 2016年 cc. All rights reserved.
+//  Created by allen on 16/4/21.
+//  Copyright © 2016年 allen. All rights reserved.
 //
 
 import UIKit
 
 class DiscountView: UIView {
-
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
     
-    private lazy  var discountPriceLabel:UILabel = {
-       let discountLabel = UILabel()
-        discountLabel.textColor = UIColor.redColor()
+    /*
+     // Only override drawRect: if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func drawRect(rect: CGRect) {
+     // Drawing code
+     }
+     */
+    private lazy var discountPrice:UILabel = {
+        let discountLabel  = UILabel()
+        discountLabel.textAlignment = .Center
         discountLabel.font = UIFont.systemFontOfSize(13)
+        discountLabel.textColor = UIColor.redColor()
         return discountLabel
     }()
     
     
-    private lazy var originPriceLabel:UILabel = {
-        let originLabel = UILabel()
-        originLabel.textColor = UIColor.grayColor()
-        originLabel.font = UIFont.systemFontOfSize(13)
-        return originLabel
+    private lazy var originalPrice:UILabel = {
+        let originalLabel = UILabel()
+        originalLabel.font = UIFont.systemFontOfSize(13)
+        return originalLabel
     }()
-    
     
     private lazy var lineView:UIView = {
         let  lineView = UIView()
-        lineView.backgroundColor = lineViewColor
-        
+        lineView.backgroundColor = UIColor.blackColor()
+        //        lineView.alpha = 0.5
         return lineView
-        
-    
     }()
     
     
-    convenience init(origin:String?,discount:String?) {
-            self.init()
-        if origin != nil || origin?.characters.count > 0 {
+    convenience init(discount:String?,origin:String?){
+        self.init(frame:CGRectZero)
+        
+        if discount != nil && discount!.characters.count > 0 {
             
-            originPriceLabel.text = "$\(origin!.cleanDecimalPointZear())"
+            self.discountPrice.text = "$" + discount!
+            //self.discountPrice.sizeToFit()
         }
         
-        if discount != nil || discount?.characters.count > 0 {
+        if origin != nil && origin?.characters.count>0 {
             
-            discountPriceLabel.text = "$\(discount!.cleanDecimalPointZear())"
-            if origin == discount {
-                originPriceLabel.hidden = true
-            }
+            self.originalPrice.text = "$" + origin!
+            // self.originalPrice.sizeToFit()
         }
         
-            
+        if discount == origin {
+            self.originalPrice.hidden = true
         }
+        
+        
+        
+    }
     
-    init(){
-        super.init(frame: CGRectZero)
-        addSubview(discountPriceLabel)
-        addSubview(originPriceLabel)
-        originPriceLabel.addSubview(lineView)
-        
+    
+    
+    override init(frame: CGRect){
+        super.init(frame: frame)
+        addSubview(discountPrice)
+        addSubview(originalPrice)
+        originalPrice.addSubview(lineView)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func layoutSubviews() {
         super.layoutSubviews()
-        discountPriceLabel.frame = CGRect(x: 5, y: 0, width: CGRectGetWidth(frame)*0.5, height: CGRectGetHeight(frame))
-        discountPriceLabel.sizeToFit();
-        originPriceLabel.frame = CGRect(x: CGRectGetMaxX(discountPriceLabel.frame)+5, y: 0, width: CGRectGetWidth(frame)*0.5, height: CGRectGetHeight(frame))
-        originPriceLabel.sizeToFit()
-        lineView.frame = CGRect(x: 0, y: (CGRectGetHeight(originPriceLabel.frame))*0.5, width: CGRectGetWidth(originPriceLabel.frame), height:1)
+        originalPrice.sizeToFit()
+        discountPrice.frame = CGRect(x: 0, y: 0, width: CGRectGetWidth(bounds)*0.5, height: CGRectGetHeight(bounds))
+        originalPrice.frame = CGRect(x: CGRectGetWidth(bounds)*0.5, y: 0, width: CGRectGetWidth(bounds)*0.5, height:CGRectGetHeight(bounds) )
+        lineView.frame = CGRect(x: 0, y: CGRectGetHeight(bounds)*0.5, width: CGRectGetWidth(originalPrice.frame)*0.75, height: 1)
     }
-
+    
 }

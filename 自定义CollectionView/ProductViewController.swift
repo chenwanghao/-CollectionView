@@ -26,8 +26,9 @@ class ProductViewController: UIViewController {
     
      init(){
         super.init(nibName: nil, bundle: nil)
-        let tableView = SuperMarketProductTableView(frame: CGRect(x: ScreenWidth*0.25, y: 64, width: ScreenWidth*0.75, height: ScreenHeight), style: .Plain)
+        let tableView = SuperMarketProductTableView(frame: CGRect(x: ScreenWidth*0.25, y: 44, width: ScreenWidth*0.75, height: ScreenHeight), style: .Plain)
         tableView.delegate = self
+        tableView.sectionFooterHeight = 0
         tableView.dataSource = self
         tableView.rowHeight = 100
         view = tableView
@@ -62,8 +63,8 @@ extension ProductViewController:UITableViewDelegate,UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-       let productCell = ProductCell.productTableView(tableView)
-        productCell.goods = arrGoods![indexPath.section][indexPath.row]
+       let productCell = ProductCell.tableView(tableView)
+        productCell.goodsArr = arrGoods![indexPath.section][indexPath.row]
     
         return productCell
     }
@@ -71,9 +72,23 @@ extension ProductViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let vc = MineTableViewVC()
-        self.presentViewController(vc, animated: true, completion: nil)
+        let vc = ProductDetailViewController(goods:arrGoods![indexPath.section][indexPath.row] )
+        vc.good = arrGoods![indexPath.section][indexPath.row]
+         self.navigationController?.pushViewController(vc , animated: true)
     }
+
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 114
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return superMarket?.data?.categories![section].name
+    }
+
 
 
 }

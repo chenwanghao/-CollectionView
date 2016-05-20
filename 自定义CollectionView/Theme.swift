@@ -24,7 +24,7 @@ public let lineViewColor = UIColor.grayColor()
 
 public let lineAlpha = CGFloat(0.5)
 
-public let margin = 10
+public let margin:CGFloat = 10
 
 public let ScreenBounds = UIScreen.mainScreen().bounds
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F052A4F1CEF342F00F9EDD8 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F052A4E1CEF342F00F9EDD8 /* ProductCell.swift */; };
 		9FB244FB1CEC992F0003CF25 /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB244FA1CEC992F0003CF25 /* UILabel + Extension.swift */; };
 		9FB245031CECA9640003CF25 /* NaviItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB245021CECA9640003CF25 /* NaviItemView.swift */; };
 		9FB245051CECA9CA0003CF25 /* NaviItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FB245041CECA9CA0003CF25 /* NaviItemView.xib */; };
@@ -50,7 +51,6 @@
 		D219D9AE1CC9CA1F00198163 /* DiscountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219D9AD1CC9CA1F00198163 /* DiscountView.swift */; };
 		D219D9B01CC9CFF600198163 /* SuperMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219D9AF1CC9CFF600198163 /* SuperMarket.swift */; };
 		D219D9B21CC9D6AC00198163 /* SuperMarketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219D9B11CC9D6AC00198163 /* SuperMarketCell.swift */; };
-		D219D9B41CC9F60300198163 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219D9B31CC9F60300198163 /* ProductCell.swift */; };
 		D219D9B61CCA082800198163 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219D9B51CCA082800198163 /* String+Extension.swift */; };
 		D22D64AF1CD351A20070376E /* ADViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D64AE1CD351A20070376E /* ADViewController.swift */; };
 		D22D64B11CD351E20070376E /* ADModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D64B01CD351E20070376E /* ADModel.swift */; };
@@ -114,6 +114,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F052A4E1CEF342F00F9EDD8 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		9FB244FA1CEC992F0003CF25 /* UILabel + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		9FB245021CECA9640003CF25 /* NaviItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaviItemView.swift; sourceTree = "<group>"; };
 		9FB245041CECA9CA0003CF25 /* NaviItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NaviItemView.xib; sourceTree = "<group>"; };
@@ -175,7 +176,6 @@
 		D219D9AD1CC9CA1F00198163 /* DiscountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountView.swift; sourceTree = "<group>"; };
 		D219D9AF1CC9CFF600198163 /* SuperMarket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperMarket.swift; sourceTree = "<group>"; };
 		D219D9B11CC9D6AC00198163 /* SuperMarketCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperMarketCell.swift; sourceTree = "<group>"; };
-		D219D9B31CC9F60300198163 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		D219D9B51CCA082800198163 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		D22D64AE1CD351A20070376E /* ADViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADViewController.swift; sourceTree = "<group>"; };
 		D22D64B01CD351E20070376E /* ADModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADModel.swift; sourceTree = "<group>"; };
@@ -380,8 +380,8 @@
 				D27941251CC87C5300CF43D9 /* SuperViewController.swift */,
 				D27941271CC87D1700CF43D9 /* SuperMarketTableView.swift */,
 				D219D9B11CC9D6AC00198163 /* SuperMarketCell.swift */,
-				D219D9B31CC9F60300198163 /* ProductCell.swift */,
 				D279412E1CC8A6C200CF43D9 /* SuperMarketProductTableView.swift */,
+				9F052A4E1CEF342F00F9EDD8 /* ProductCell.swift */,
 				D27941301CC8C68800CF43D9 /* ProductViewController.swift */,
 				D269C95D1CD20FFD00F553EA /* ProductDetailViewController.swift */,
 				D219D9AD1CC9CA1F00198163 /* DiscountView.swift */,
@@ -638,6 +638,7 @@
 				D28F0C881CC0EBB2009CA6C9 /* MJRefreshNormalHeader.m in Sources */,
 				D26935491CBF6349008E61AF /* ViewController.m in Sources */,
 				D20548BD1CC753AB00D856C2 /* BaseView.m in Sources */,
+				9F052A4F1CEF342F00F9EDD8 /* ProductCell.swift in Sources */,
 				D20548B41CC72F1B00D856C2 /* UIImage+MultiFormat.m in Sources */,
 				D28F0C911CC0EFC8009CA6C9 /* GifHeader.m in Sources */,
 				D20548AE1CC72F1B00D856C2 /* SDWebImageDownloader.m in Sources */,
@@ -703,7 +704,6 @@
 				D28F0C851CC0EBB2009CA6C9 /* MJRefreshBackNormalFooter.m in Sources */,
 				D20548B81CC72F1B00D856C2 /* UIView+WebCacheOperation.m in Sources */,
 				D20548A91CC72F1B00D856C2 /* MKAnnotationView+WebCache.m in Sources */,
-				D219D9B41CC9F60300198163 /* ProductCell.swift in Sources */,
 				D28F0C7D1CC0EBB2009CA6C9 /* MJRefreshBackFooter.m in Sources */,
 				D28F0C4B1CC0BA93009CA6C9 /* CollectionReusableView.m in Sources */,
 				D22D64B11CD351E20070376E /* ADModel.swift in Sources */,

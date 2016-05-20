@@ -67,7 +67,7 @@ class SuperMarketProductTableView: UITableView {
     
     
     override init(frame: CGRect, style: UITableViewStyle) {
-        super.init(frame: frame, style: .Plain)
+        super.init(frame: frame, style: .Grouped)
         backgroundColor = tabelBGColor
         
         

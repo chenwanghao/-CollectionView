@@ -215,7 +215,9 @@ class ProductDetailViewController: UIViewController {
                 
             }
             
-          let priceView = DiscountView(origin:good!.market_price, discount: good!.price)
+         // let priceView = DiscountView(origin:good!.market_price, discount: good!.price)
+            let priceView = DiscountView(discount: good!.price, origin: good!.market_price)
+            
             priceView.frame = CGRect(x: 0, y: 30, width: view.mj_w, height: 20)
             nameView.addSubview(priceView)
             brandNameLabel?.text = good?.brand_name
