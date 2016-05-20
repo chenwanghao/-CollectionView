@@ -21,7 +21,7 @@ class NaviView: UIView {
     
     private lazy var peiSong : UILabel = {
         let peisong = UILabel()
-        peisong.layer.borderWidth = 1
+        peisong.layer.borderWidth = 0.5
         peisong.layer.borderColor = UIColor.blackColor().CGColor
         
         
@@ -46,6 +46,9 @@ class NaviView: UIView {
         self.init(frame:frame)
         titleBtn.setImage(UIImage(named: "icon_down_arrow"), forState: .Normal)
         titleBtn.setTitle(title, forState: .Normal)
+        titleBtn.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        titleBtn.titleLabel?.font = UIFont.systemFontOfSize(14)
+        self.userInteractionEnabled = true
         addSubview(peiSong)
         addSubview(titleBtn)
     }
@@ -72,5 +75,22 @@ class NaviView: UIView {
 
 
 class TitleButton: UIButton {
+    var titleSize:CGSize? = nil
     
+    override func setTitle(title: String?, forState state: UIControlState) {
+        super.setTitle(title, forState: state)
+        userInteractionEnabled = false
+        titleSize = title?.boundingRectWithSize(14)
+        
+    }
+    
+    override func titleRectForContentRect(contentRect: CGRect) -> CGRect {
+        
+        return CGRect(x: 5, y: 0, width: titleSize!.width, height: contentRect.height)
+    }
+    
+    
+    override func imageRectForContentRect(contentRect: CGRect) -> CGRect {
+        return CGRect(x:titleSize!.width+10, y: 11.5, width: 13, height: 7)
+    }
 }

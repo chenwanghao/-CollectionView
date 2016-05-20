@@ -145,12 +145,16 @@
 //
     
     //导航栏主视图
-   NaviView * titleView = [[NaviView alloc] initWithFrame:CGRectMake(0, 0, 100, 30) title:@"人民大会堂"];
+   NaviView * titleView = [[NaviView alloc] initWithFrame:CGRectMake(0, 0, 150, 30) title:@"人民大会堂"];
     titleView.backgroundColor = [UIColor clearColor];
-
+    UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self.navigationController action:@selector(navTitleViewClick:)];
+    [titleView addGestureRecognizer:recognizer];
     self.navigationItem.titleView = titleView;
 
 }
+
+
+
 
 
 -(void)headRefresh{

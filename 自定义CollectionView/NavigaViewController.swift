@@ -29,6 +29,12 @@ class NavigaViewController: UINavigationController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    func navTitleViewClick(recognizer:UITapGestureRecognizer){
+            print("导航栏title被点击")
+    }
+    
 
     
     

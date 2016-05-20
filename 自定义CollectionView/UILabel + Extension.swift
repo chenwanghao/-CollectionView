@@ -28,3 +28,28 @@ extension UILabel {
     }
 
 }
+
+
+extension String {
+    func boundingRectWithSize(fontSize:CGFloat) -> CGSize? {
+        
+        
+        
+       let font = UIFont.systemFontOfSize(fontSize)
+        let dict = [NSFontAttributeName : font]
+        
+        
+        let nsStr =  NSString(CString:self.cStringUsingEncoding(NSUTF8StringEncoding)!,
+                              encoding: NSUTF8StringEncoding)
+        
+        let mySize = nsStr?.boundingRectWithSize(CGSize(width:320, height: 0), options: .UsesLineFragmentOrigin, attributes: dict, context: nil).size
+        
+        
+        
+        return mySize!
+    }
+
+
+
+
+}
