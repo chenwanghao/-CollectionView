@@ -20,9 +20,16 @@ class NavigaViewController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    
+   
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -31,9 +38,6 @@ class NavigaViewController: UINavigationController {
     
     
     
-    func navTitleViewClick(recognizer:UITapGestureRecognizer){
-            print("导航栏title被点击")
-    }
     
 
     

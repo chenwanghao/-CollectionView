@@ -48,9 +48,15 @@ class NaviView: UIView {
         titleBtn.setTitle(title, forState: .Normal)
         titleBtn.setTitleColor(UIColor.blackColor(), forState: .Normal)
         titleBtn.titleLabel?.font = UIFont.systemFontOfSize(14)
+        
         self.userInteractionEnabled = true
+        self.backgroundColor = UIColor.clearColor()
         addSubview(peiSong)
         addSubview(titleBtn)
+        let recognizer = UITapGestureRecognizer(target: self, action: "navTitleViewClick:")
+        self.addGestureRecognizer(recognizer)
+       
+
     }
     
     
@@ -70,6 +76,13 @@ class NaviView: UIView {
         peiSong.frame = CGRect(x: 0, y: (30 - (mySize?.height)! - 4)*0.5, width: (mySize?.width)! + 4, height: (mySize?.height)! + 4)
         titleBtn.frame = CGRect(x: CGRectGetMaxX(peiSong.frame), y: 0, width: bounds.width - CGRectGetMaxX(peiSong.frame) - 5, height: bounds.height)
     }
+    
+    
+    
+    func navTitleViewClick(recognizer:UITapGestureRecognizer){
+        print("导航栏title被点击")
+    }
+    
     
 }
 

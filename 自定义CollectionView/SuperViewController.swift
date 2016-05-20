@@ -43,6 +43,12 @@ class SuperViewController: UIViewController {
         superTableView?.dataSource = self
         view.addSubview(superTableView!)
         
+        
+        //导航栏主视图
+        let titleView = NaviView(frame: CGRect(x: 0, y: 0, width: 150, height: 30), title: "人民大会堂")
+        self.navigationItem.titleView = titleView
+        
+        
     }
     
     

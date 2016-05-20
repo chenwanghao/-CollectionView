@@ -139,18 +139,14 @@
 
     
       NaviItemView * rightBtn = [NaviItemView sharenaviViewWithImageAndTitle:@"icon_search" titleName:@"搜索" tag:1];
-    //e:@"icon_search" titleName:@"搜索"
+    
      UIBarButtonItem *rightBarBtn  =[[UIBarButtonItem alloc] initWithCustomView:rightBtn];
      self.navigationItem.rightBarButtonItems =  @[leftMarginBtn,rightBarBtn];
 //
     
     //导航栏主视图
-   NaviView * titleView = [[NaviView alloc] initWithFrame:CGRectMake(0, 0, 150, 30) title:@"人民大会堂"];
-    titleView.backgroundColor = [UIColor clearColor];
-    UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self.navigationController action:@selector(navTitleViewClick:)];
-    [titleView addGestureRecognizer:recognizer];
-    self.navigationItem.titleView = titleView;
-
+     NaviView  * naviView = [[NaviView alloc] initWithFrame:CGRectMake(0, 0, 100, 30) title:@"人民大会堂"];
+    self.navigationItem.titleView = naviView;
 }
 
 
